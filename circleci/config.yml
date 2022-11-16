@@ -1,0 +1,31 @@
+# Use the latest 2.1 version of CircleCi pipeline process engine
+#See: https://cicleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+#Define a job to be invoked later in a workflow
+jobs:
+  #below is the def of your job to build and test your app
+ build-and-test:
+  working_directory: ~/CiCdDemo/hello-circle
+
+  docker:
+    - image: cimg/openjdk:8.0
+
+  steps:
+    # Checkout the code as the first step
+    - checkout:
+        path: ~/CiCdDemo
+    #Use mvn clean and packase as the stard maven build phase
+    - run:
+        name: Build
+        command: mvn -B -DskipTests clean package
+    #then urn your tests
+    - run:
+        name: Test
+        command: mvn test
+workflows:
+  sample:
+    jobs:
+      - build-and-test
+
+
