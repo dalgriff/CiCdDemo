@@ -13,6 +13,6 @@ public class HelloCircleController {
 
     @GetMapping(value="/answer")
     public String getAnswer() {
-        return "The answer is 42!!!";
+        return "The answer is 42!";
     }
 }
