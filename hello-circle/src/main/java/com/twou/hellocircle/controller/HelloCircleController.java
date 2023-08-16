@@ -8,6 +8,7 @@ public class HelloCircleController {
 
     @GetMapping(value = "/hello")
     public String helloCircle(){
+        // return hello circle
         return "Hello, Circle!";
     }
 
